@@ -6,12 +6,7 @@
   <title>Line Viewer</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      background: #0d0f17;
-    }
-
+    html, body { height: 100%; background: #0d0f17; }
     body {
       color: #c9cde0;
       font-family: 'Consolas', 'JetBrains Mono', 'Fira Code', monospace;
@@ -20,7 +15,6 @@
       overflow-y: scroll;
       overflow-x: auto;
     }
-
     pre {
       display: block;
       padding: 16px 24px;
@@ -28,34 +22,73 @@
       width: max-content;
       min-width: 100%;
     }
-
-    #error { color: #555; font-size: 13px; }
   </style>
 </head>
 <body>
-<pre id="out"><span id="error">content.txt nahi mili — HTML ke saath waale folder mein rakho.</span></pre>
-
-<script>
-  async function load() {
-    try {
-      const res = await fetch('content.txt?_=' + Date.now());
-      if (!res.ok) throw new Error();
-      const text = await res.text();
-
-      const lines = text.split('\n');
-      if (lines[lines.length - 1] === '') lines.pop();
-
-      const pad = String(lines.length).length;
-
-      document.getElementById('out').textContent = lines.map((line, i) => {
-        const num = String(i + 1).padStart(pad, ' ');
-        return num + '  ' + line;
-      }).join('\n');
-
-    } catch(e) {}
-  }
-
-  load();
-</script>
+<pre>
+1  
+2  bhai dikh rha h kya🗿🗿🗿🗿
+3  <!DOCTYPE html>🗿🗿🗿
+4  <html lang="hi">
+5  <head>
+6    <meta charset="UTF-8" />
+7    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+8    <title>Line Viewer</title>
+9    <style>
+10      * { margin: 0; padding: 0; box-sizing: border-box; }
+11  
+12      html, body {
+13        height: 100%;
+14        background: #0d0f17;
+15      }
+16  
+17      body {
+18        color: #c9cde0;
+19        font-family: 'Consolas', 'JetBrains Mono', 'Fira Code', monospace;
+20        font-size: 14px;
+21        line-height: 1.8;
+22        overflow-y: scroll;
+23        overflow-x: auto;
+24      }
+25  
+26      pre {
+27        display: block;
+28        padding: 16px 24px;
+29        white-space: pre;
+30        width: max-content;
+31        min-width: 100%;
+32      }
+33  
+34      #error { color: #555; font-size: 13px; }
+35    </style>
+36  </head>
+37  <body>
+38  <pre id="out"><span id="error">content.txt nahi mili — HTML ke saath waale folder mein rakho.</span></pre>
+39  
+40  <script>
+41    async function load() {
+42      try {
+43        const res = await fetch('content.txt?_=' + Date.now());
+44        if (!res.ok) throw new Error();
+45        const text = await res.text();
+46  
+47        const lines = text.split('\n');
+48        if (lines[lines.length - 1] === '') lines.pop();
+49  
+50        const pad = String(lines.length).length;
+51  
+52        document.getElementById('out').textContent = lines.map((line, i) => {
+53          const num = String(i + 1).padStart(pad, ' ');
+54          return num + '  ' + line;
+55        }).join('\n');
+56  
+57      } catch(e) {}
+58    }
+59  
+60    load();
+61  </script>
+62  </body>
+63  </html>
+</pre>
 </body>
 </html>
