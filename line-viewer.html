@@ -38,7 +38,7 @@
 <script>
   async function load() {
     try {
-      const res = await fetch('content.txt?_=' + Date.now());
+      const res = await fetch('https://raw.githubusercontent.com/tusharsharmalogic-cmyk/Myproject/main/content.txt?_=' + Date.now());
       if (!res.ok) throw new Error();
       const text = await res.text();
 
