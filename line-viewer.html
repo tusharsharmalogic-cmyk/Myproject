@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Line Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      background: #0d0f17;
+    }
+
+    body {
+      color: #c9cde0;
+      font-family: 'Consolas', 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      overflow-y: scroll;
+      overflow-x: auto;
+    }
+
+    pre {
+      display: block;
+      padding: 16px 24px;
+      white-space: pre;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    #error { color: #555; font-size: 13px; }
+  </style>
+</head>
+<body>
+<pre id="out"><span id="error">content.txt nahi mili — HTML ke saath waale folder mein rakho.</span></pre>
+
+<script>
+  async function load() {
+    try {
+      const res = await fetch('content.txt?_=' + Date.now());
+      if (!res.ok) throw new Error();
+      const text = await res.text();
+
+      const lines = text.split('\n');
+      if (lines[lines.length - 1] === '') lines.pop();
+
+      const pad = String(lines.length).length;
+
+      document.getElementById('out').textContent = lines.map((line, i) => {
+        const num = String(i + 1).padStart(pad, ' ');
+        return num + '  ' + line;
+      }).join('\n');
+
+    } catch(e) {}
+  }
+
+  load();
+</script>
+</body>
+</html>
